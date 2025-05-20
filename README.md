@@ -11,53 +11,9 @@ A api key for OPENROUTER will also be needed to run the software.
 
 
 ## Architecture Diagram
-┌─────────────────────────────────────────────────────────────┐
-│                                                             │
-│                   Skin Lesion Analysis Tool                 │
-│                                                             │
-└───────────────────────────┬─────────────────────────────────┘
-                            │
-         ┌─────────────────┐│┌─────────────────┐
-         │                 ││││                │
-         │                 ││││                │
-         │   User Input    │┘│   Knowledge     │
-         │   - Image       │ │   Base          │
-         │   - Text notes  │ │   - PDF Docs    │
-         │                 │ │   - Chunked     │
-         │                 │ │     Text        │
-         └────────┬────────┘ └────────┬────────┘
-                  │                   │
-┌─────────────────┼───────────────────┼────────────────────────┐
-│                 │                   │                        │
-│ ┌───────────────▼──────┐  ┌─────────▼──────────────┐         │
-│ │                      │  │                        │         │
-│ │ Image Classification │  │ Text Processing        │         │
-│ │ Model (EfficientNet) │  │ - Sentence Transformer │         │
-│ │ - Benign             │  │ - Semantic Search      │         │
-│ │ - Nevus              │  │ - Top-k Document       │         │
-│ │ - Melanoma           │  │   Retrieval            │         │
-│ │                      │  │                        │         │
-│ └──────────┬───────────┘  └────────────┬───────────┘         │
-│            │                           │                     │
-│            └────────┬──────────────────┘                     │
-│                     │                                        │
-│              ┌──────▼───────┐                                │
-│              │              │                                │
-│              │  LLM Engine  │                                │
-│              │  (OpenRouter)│                                │
-│              │              │                                │
-│              └──────┬───────┘                                │
-│                     │                                        │
-└─────────────────────┼────────────────────────────────────────┘
-                      │
-         ┌────────────▼───────────┐
-         │                        │
-         │ User Interface (Gradio)│
-         │ - Classification       │
-         │ - Medical Assessment   │
-         │ - Reference Chunks     │
-         │                        │
-         └────────────────────────┘
+
+![image](https://github.com/user-attachments/assets/6883969c-0e4e-409e-bdc9-c288edc16c76)
+
 ### Sample Input/Output
 **Input Example**
 Image Input: Upload of a mole/skin lesion photo
